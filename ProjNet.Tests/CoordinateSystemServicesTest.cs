@@ -9,6 +9,7 @@ using NUnit.Framework;
 using ProjNet;
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
+using ProjNet.Geometries;
 
 namespace ProjNET.Tests
 {
@@ -24,7 +25,7 @@ namespace ProjNET.Tests
             Assert.IsNotNull(css.GetCoordinateSystem(3857));
         }
 
-        [TestCase(@"D:\temp\ConsoleApplication9\SpatialRefSys.xml")]
+        [TestCase(@"D:\Data\SpatialRefSys.xml")]
         public void TestConstructorLoadXml(string xmlPath)
         {
             if (!File.Exists(xmlPath))
@@ -32,6 +33,8 @@ namespace ProjNET.Tests
 
             var css = new CoordinateSystemServices(new CoordinateSystemFactory(),
                 new CoordinateTransformationFactory(), LoadXml(xmlPath));
+            var trans = css.CreateTransformation(css.GetCoordinateSystem(4326), ProjectedCoordinateSystem.WebMercator);
+            var result = trans.MathTransform.Transform(new double[] { -67.02765, -18.01980 });
 
             Assert.IsNotNull(css.GetCoordinateSystem(4326));
             Assert.IsNotNull(css.GetCoordinateSystem("EPSG", 4326));
@@ -39,7 +42,7 @@ namespace ProjNET.Tests
 
         }
 
-        [TestCase(@"")]
+        [TestCase(@"D:\Data\SRID.csv")]
         public void TestConstructorLoadCsv(string csvPath)
         {
             if (!string.IsNullOrWhiteSpace(csvPath))
@@ -48,7 +51,9 @@ namespace ProjNET.Tests
 
             var css = new CoordinateSystemServices(new CoordinateSystemFactory(),
                 new CoordinateTransformationFactory(), LoadCsv(csvPath));
-
+            //var trans = css.CreateTransformation(css.GetCoordinateSystem(4326), ProjectedCoordinateSystem.WebMercator);
+            var trans = css.CreateTransformation(css.GetCoordinateSystem(4326), css.GetCoordinateSystem(3857));
+            var result = trans.MathTransform.Transform(new double[] { -67.02765, -18.01980 });
             Assert.IsNotNull(css.GetCoordinateSystem(4326));
             Assert.IsNotNull(css.GetCoordinateSystem("EPSG", 4326));
             Assert.IsTrue(ReferenceEquals(css.GetCoordinateSystem("EPSG", 4326), css.GetCoordinateSystem(4326)));

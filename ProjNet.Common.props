@@ -11,7 +11,7 @@
     <RestoreAdditionalProjectSources>$(RestoreAdditionalProjectSources);https://www.myget.org/F/nettopologysuite/api/v3/index.json</RestoreAdditionalProjectSources>
 
     <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)scskey.snk</AssemblyOriginatorKeyFile>
-
+    
     <Deterministic>true</Deterministic>
     <NtsOfficialRelease>false</NtsOfficialRelease>
   </PropertyGroup>
@@ -83,10 +83,10 @@
     <AssemblyVersion>$(NtsMajorVersion).0.0.0</AssemblyVersion>
     <AssemblyFileVersion>$(NtsMajorVersion).$(NtsMinorVersion).$(NtsPatchVersion).$(NtsBuildNumber)</AssemblyFileVersion>
 
-    <Company>NetTopologySuite Team</Company>
+    <Company>Gisoft Team</Company>
 
     <CopyrightPeople>$(Company)</CopyrightPeople>
-    <CopyrightPeople>$(CopyrightPeople), Morten Nielsen</CopyrightPeople>
+    <CopyrightPeople>$(CopyrightPeople), Klose Jay</CopyrightPeople>
     <!--<CopyrightPeople>$(CopyrightPeople), Additional Person</CopyrightPeople>-->
     <Copyright>Copyright © 2006 - $([System.DateTime]::UtcNow.Year) $(CopyrightPeople)</Copyright>
   </PropertyGroup>

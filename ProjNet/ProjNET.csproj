@@ -6,18 +6,20 @@
     <RootNamespace>ProjNet</RootNamespace>
     <TargetFramework>netstandard2.0</TargetFramework>
     <SignAssembly>true</SignAssembly>
+    <AssemblyName>Gisoft.ProjNet</AssemblyName>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <Import Project="$(SolutionDir)ProjNet.Common.props" />
 
   <PropertyGroup Label="Assembly Info">
-    <AssemblyTitle>Proj.NET</AssemblyTitle>
+    <AssemblyTitle>Gisoft.Proj.NET</AssemblyTitle>
     <Description>Proj.NET performs point-to-point coordinate conversions between geodetic coordinate systems for use in .Net, Geographic Information Systems (GIS) or GPS applications. The spatial reference model used adheres to the Simple Features specification.</Description>
   </PropertyGroup>
 
   <PropertyGroup Label="NuGet Package Info">
     <PackageId>Gisoft.ProjNET</PackageId>
-    <Authors>Morton Nielsen, NetTopologySuite-Team</Authors>
+    <Authors>Klose Jay, Gisoft-Team</Authors>
     <PackageIconUrl>https://raw.githubusercontent.com/NetTopologySuite/ProjNet4GeoAPI/master/icon.png</PackageIconUrl>
     <PackageLicenseExpression>LGPL-2.1-or-later</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
